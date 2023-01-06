@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -8,5 +8,35 @@
     <h1 id="header"></h1>
     <div id="pokemon-container"></div>
     <script src="/script.js"></script>
+  </body>
+</html>
+ -->
+
+<html>
+  <head>
+    <title>Mengambil Data Pokemon</title>
+  </head>
+  <body>
+    <h1>Mengambil Data Pokemon</h1>
+    <div id="pokemon-data"></div>
+    <script>
+      // Fungsi untuk mengambil data Pokemon
+      function getPokemonData() {
+        // Mengambil data dari API Pokemon
+        fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+          .then(response => response.json())
+          .then(data => {
+            // Menampilkan nama dan gambar Pokemon
+            const pokemonData = `
+              <h2>${data.name}</h2>
+              <img src="${data.sprites.front_default}" alt="${data.name}" />
+            `;
+            document.getElementById('pokemon-data').innerHTML = pokemonData;
+          });
+      }
+
+      // Memanggil fungsi untuk mengambil data Pokemon saat halaman di-load
+      getPokemonData();
+    </script>
   </body>
 </html>
